@@ -1,0 +1,43 @@
+<body style="background-image:url(<%= asset_path '/images/b1.jpg' %>);">
+
+<div class="panel panel-default panel-list" style="width:70%;margin:20px auto;">
+    <div class="panel-heading" style="background-color:#3c8689;">
+        <h3 class="panel-title">
+           <center>Your Selected Product</center> 
+        </h3>
+    </div>
+    <div class="panel-body" style="background-color:black;">
+
+    <div class="row">
+        <div class="col-lg-4 col-md-4" style="padding-left:30px;">
+            <%= image_tag(@product.image,:style => "height:400px;width:200;") %>
+        </div>
+        <div class="col-lg-2 col-md-2">
+              <strong style="color:yellow;font-size:2em;font-weight:bolder;text-shadow: -1px -1px 2px rgba(0,0,0,0.6),-2px -2px 1px rgba(0,0,0,0.6),-2px -2px 2px rgba(0,0,0,0.6),-3px -3px 2px rgba(0,0,0,0.6);">Name:</strong><br>
+            <div style="color:lightgreen;font-size:2em;text-shadow: -1px -1px 2px rgba(0,0,0,0.6),-2px -2px 1px rgba(0,0,0,0.6),-2px -2px 2px rgba(0,0,0,0.6),-3px -3px 2px rgba(0,0,0,0.6);">
+            <%= @product.name%>
+                </div>
+        </div>
+             <div class="col-lg-3 col-md-3">
+              <strong style="color:yellow;font-size:2em;font-weight:bolder;text-shadow: -1px -1px 2px rgba(0,0,0,0.6),-2px -2px 1px rgba(0,0,0,0.6),-2px -2px 2px rgba(0,0,0,0.6),-3px -3px 2px rgba(0,0,0,0.6);">Category:</strong><br>
+            <div style="color:lightgreen;font-size:2em;text-shadow: -1px -1px 2px rgba(0,0,0,0.6),-2px -2px 1px rgba(0,0,0,0.6),-2px -2px 2px rgba(0,0,0,0.6),-3px -3px 2px rgba(0,0,0,0.6);">
+            <%= @product.category.name%>
+                </div>
+        </div>
+<div style="float:right;padding-right:10%;">
+<div class="col-lg-2 col-md-2">
+  <strong style="color:yellow;font-size:2em;font-weight:bolder;text-shadow: -1px -1px 2px rgba(0,0,0,0.6),-2px -2px 1px rgba(0,0,0,0.6),-2px -2px 2px rgba(0,0,0,0.6),-3px -3px 2px rgba(0,0,0,0.6);">Price:</strong><br>
+        <div style="color:lightgreen;font-size:2em;text-shadow: -1px -1px 2px rgba(0,0,0,0.6),-2px -2px 1px rgba(0,0,0,0.6),-2px -2px 2px rgba(0,0,0,0.6),-3px -3px 2px rgba(0,0,0,0.6);">
+  $<%= @product.price %>
+        </div>
+        </div>
+    </div>
+
+    </div>
+         <center><%= button_to 'Add to Cart',add_cart_path,method: :post, class: 'btn btn-primary btn-lg'%></center>
+        <% if current_user && current_user.admin?%>
+<%= link_to 'Edit', edit_product_path(@product) %> |
+        <%end%>
+<%= link_to 'Back', products_path %>
+</div>
+</div>

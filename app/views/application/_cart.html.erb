@@ -1,0 +1,10 @@
+
+<p class="navbar-text navbar-right" style="padding-right:80px;font-size:1.2em;font-weight:bolder;">
+<% if @cart.empty? %>
+Your cart is empty.
+<% else %>
+<%=link_to "You have #{pluralize @cart.count,"item"} in your cart",cart_path%>
+<% end %>
+</p>
+
+

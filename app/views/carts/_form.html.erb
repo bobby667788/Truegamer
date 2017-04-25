@@ -1,0 +1,32 @@
+  <h2><center style="font-size:1.5em;color:violet;text-shadow: -1px -1px 2px rgba(0,0,0,0.6),-2px -2px 1px rgba(0,0,0,0.6),-2px -2px 2px rgba(0,0,0,0.6),-3px -3px 2px rgba(0,0,0,0.6);">Some of your personal details</center></h2>
+<%= form_for @order_form,url: orders_path do |f|%>
+<%=f.fields_for :user,@order_form.user do |u|%>
+    <div class="form-group">
+        <p><%=u.text_field :name,placeholder:"Name",class:"form-control"%></p><br>
+       <p> <%=u.text_field :email,placeholder:"Email",class:"form-control"%></p><br>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-6">
+                <%=u.text_field :address,placeholder:"Address",class:"form-control"%><br>
+            </div>
+            <div class="col-md-3">
+                  <%=u.text_field :postal_code,placeholder:"Postal Code",class:"form-control"%><br>
+            </div>
+             <div class="col-md-3">
+                   <%=u.text_field :city,placeholder:"City",class:"form-control"%><br><br>
+            </div>
+        </div>
+        <%=u.country_select :country,class:"form-control"%><br><br>
+        <%=u.text_field :phone,placeholder:"Phone",class:"form-control"%><br>
+    </div>
+<%end%>
+<div id="payment-form"></div>
+    <%=f.submit "Place Order!",class:"btn btn-success btn-lg"%>
+        <script>
+            var clientToken = "<%=@client_token%>";
+            braintree.setup(clientToken, "dropin", {
+    container: "payment-form"
+            });
+</script>
+<%end%>

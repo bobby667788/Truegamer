@@ -1,0 +1,52 @@
+<body style="background-image:url(<%= asset_path '/images/b3.jpg' %>);">
+    <br><br><br>
+     <div class="panel panel-default panel-list" style="width:50%;margin:20px auto;">
+    <div class="panel-heading" style="background-color:blue;">
+        <h3 class="panel-title">
+           <center style="color:yellow;font-weight:bolder;font-size:1.4em;">You are checking out the following products</center> 
+        </h3>
+    </div>
+         <div class="panel-body">
+<% @cart.items.each do |item|%>
+             <div class="row">
+                 <div class="col-lg-4 col-md-4">  
+                     <div style="font-weight:bolder;font-size:1.1em;"><%=item.product.name%></div>
+                 </div>
+               <div class="col-lg-4 col-md-4">
+                   <div style="font-weight:bolder;font-size:1.1em;"><%=item.quantity%></div>
+                 </div>
+            <div class="col-lg-4 col-md-4">
+                <div style="font-weight:bolder;font-size:1.1em;">$<%=item.total_price%> </div>
+                </div>
+           
+             </div>
+             <div style="border:1px solid black"></div>
+             <br>
+<%end%>
+    <br><br>
+             <div style="font-weight:bolder;font-size:1.1em;"> The Grand Total Is $<%=@cart.grand_total%></div>
+    </div> 
+         </div>
+
+<br><br>
+    <%if current_user %>
+    
+    <center>
+        <%= form_for @order_form,url: {:controller=>'orders', :action=>'custom'} do |f|%>
+        <div id="payment-form"></div>
+        <%= f.submit 'Place order',class:"btn btn-success btn-lg"%>      
+        <script>
+            var clientToken = "<%=@client_token%>";
+            braintree.setup(clientToken, "dropin", {
+    container: "payment-form"
+            });
+        </script> </center>
+        <%end%>
+    <%else%>
+<div style="width:70%;margin:20px auto;">
+    <%=render "errors"%>
+    <%=render "form"%> 
+    <%end%>
+    </div>
+</body>
+    

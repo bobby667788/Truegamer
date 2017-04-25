@@ -1,0 +1,54 @@
+<body style="background-image:url(<%= asset_path '/images/b1.jpg' %>);">
+
+<br><br>
+        <div class="panel panel-default panel-list" style="width:80%;margin:20px auto;">
+    <div class="panel-heading" style="background-color:lawngreen;">
+        <h3 class="panel-title">
+           <center style="color:brown;font-weight:bolder;font-size:1.4em;">The Products in your Cart</center> 
+        </h3>
+    </div>
+             <div class="panel-body" style="background-color:black;">
+<% @cart.items.each do |item| %>
+    <div class="row">
+        <div class="col-lg-4 col-md-4" style="padding-left:30px;">
+            <%= image_tag(item.product.image,:style => "height:300px;width:250px;") %>
+        </div>
+        <div class="col-lg-2 col-md-2">
+              <strong style="color:skyblue;font-size:2em;font-weight:bolder;text-shadow: -1px -1px 2px rgba(0,0,0,0.6),-2px -2px 1px rgba(0,0,0,0.6),-2px -2px 2px rgba(0,0,0,0.6),-3px -3px 2px rgba(0,0,0,0.6);">Quantity:</strong><br>
+            <div style="color:white;font-size:2.5em;text-shadow: -1px -1px 2px rgba(0,0,0,0.6),-2px -2px 1px rgba(0,0,0,0.6),-2px -2px 2px rgba(0,0,0,0.6),-3px -3px 2px rgba(0,0,0,0.6);">
+            <%= item.quantity%>
+                </div>
+        </div>
+              <div class="col-lg-2 col-md-2">
+              <strong style="color:skyblue;font-size:2em;font-weight:bolder;text-shadow: -1px -1px 2px rgba(0,0,0,0.6),-2px -2px 1px rgba(0,0,0,0.6),-2px -2px 2px rgba(0,0,0,0.6),-3px -3px 2px rgba(0,0,0,0.6);">Name:</strong><br>
+            <div style="color:white;font-size:2.5em;text-shadow: -1px -1px 2px rgba(0,0,0,0.6),-2px -2px 1px rgba(0,0,0,0.6),-2px -2px 2px rgba(0,0,0,0.6),-3px -3px 2px rgba(0,0,0,0.6);">
+            <%= item.product.name%>
+                </div>
+        </div>
+<div style="float:right;padding-right:10%;">
+<div class="col-lg-2 col-md-2">
+  <strong style="color:skyblue;font-size:2em;font-weight:bolder;text-shadow: -1px -1px 2px rgba(0,0,0,0.6),-2px -2px 1px rgba(0,0,0,0.6),-2px -2px 2px rgba(0,0,0,0.6),-3px -3px 2px rgba(0,0,0,0.6);">Price:</strong><br>
+        <div style="color:white;font-size:2.5em;text-shadow: -1px -1px 2px rgba(0,0,0,0.6),-2px -2px 1px rgba(0,0,0,0.6),-2px -2px 2px rgba(0,0,0,0.6),-3px -3px 2px rgba(0,0,0,0.6);">
+  $<%= item.product.price %>
+        </div>
+        </div>
+    </div>
+
+    </div>
+        <div style="border:1px dotted white;"></div> 
+                 <br>
+         <center>
+
+    <%end%><br><br><div style="float:right;padding-right:10%;">
+             <strong style="color:skyblue;font-size:2em;font-weight:bolder;text-shadow: -1px -1px 2px rgba(0,0,0,0.6),-2px -2px 1px rgba(0,0,0,0.6),-2px -2px 2px rgba(0,0,0,0.6),-3px -3px 2px rgba(0,0,0,0.6);">Grand total:</strong>
+            <div style="color:white;font-size:2em;text-shadow: -1px -1px 2px rgba(0,0,0,0.6),-2px -2px 1px rgba(0,0,0,0.6),-2px -2px 2px rgba(0,0,0,0.6),-3px -3px 2px rgba(0,0,0,0.6);">
+           <%=@cart.grand_total%>
+             </div></div> 
+            
+            <%=link_to "Checkout",checkout_cart_path,class: "btn btn-lg btn-success"%></center>
+            </div>
+</div>
+</body>    
+ 
+
+

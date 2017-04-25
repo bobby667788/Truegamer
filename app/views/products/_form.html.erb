@@ -1,0 +1,41 @@
+<body style="background-image:url(<%= asset_path '/images/new.jpg' %>);">
+
+<%= form_for(product) do |f| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div style="width:50%;margin:20px auto">
+  <div class="field" >
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :price %>
+    <%= f.text_field :price %>
+  </div>
+    
+     <div class="field">
+    <%= f.label :Category %>
+    <%= f.select :category_id,Category.all.map{|c| [c.name,c.id]} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Image_Url %>
+    <%= f.text_field :image %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+    </div>
+</body>

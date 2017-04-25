@@ -1,0 +1,26 @@
+<body style="background-image:url(<%= asset_path 'images/new.jpg' %>);">
+<h1 style="text-shadow: -1px -1px 2px rgba(0,0,0,0.6),-2px -2px 1px rgba(0,0,0,0.6),-2px -2px 2px rgba(0,0,0,0.6),-3px -3px 2px rgba(0,0,0,0.6);font-size:3em;font-family:cursive;color:lawngreen;"><center>Youtube  Videos Search</center></h1><br>
+<center>
+<%= form_tag nil, method: 'get', class: 'form-inline', style: 'margin-bottom: 20px' do %>
+ <div class="form-group" style="width:20%;">
+    <%= text_field_tag :q%>
+     </div>
+     <div class="form-group">
+    <%= submit_tag "Search", class: 'btn btn-success btn-lg' %>
+    </div>
+<% end %>
+</center><br>
+   
+          <div class="panel panel-default panel-list" style="width:70%;margin:20px auto;">
+          <div class="panel-heading">
+            <h3 class="panel-title"><center>Your Searched Videos</center></h3>
+        </div>
+          <div class="panel-body" style="padding:20%;">
+            <% @videos.each do |video|%>
+                <%= video.title%><br><br>
+              <%=raw video.embedded_code%>
+            <div style="border:solid 1px black;margin-top:40px;margin-bottom:40px;" ></div>
+          <%end%>
+          </div>
+    </div>
+</body>

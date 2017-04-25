@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title> GameZone</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="text/javascript" href="js/bootstrap.min.js">
+    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="text/javascript" href="js/custom.js">
+    </head>
+    <body style="background-image:url(<%= asset_path 'images/b3.jpg' %>);">
+
+<div class="container">
+    <div class="pad"></div>
+        <div id="quote">
+            <center>I   have   a   dream   that   one   day   my   parents   will   understand   that   online   games   cannot   be   paused</center>
+        </div>
+        <div id="shoutbox">
+           <div class="h12"><center><p>ASK THE COMMUNITY</p></center></div> 
+                <div id="shoutin"><ul>
+                    <%for shout in @comments%>
+                    <li class="shout"><span> <%=shout.created_at%> -</span><%=shout.name%>: <%=shout.comment%></li>
+                    <%end%>
+                </ul></div>
+               <div id="input">
+                <div class="form-group">
+                    <center>
+                    <%=form_for :comment,:url => {:action=>'create'} do |f|%>
+            <div class="row">
+            <div class="col-md-5">
+                <%=f.text_field :name, :size => "40", placeholder:"Your Name",class:"form-control"%>
+                </div> 
+            <div class="col-md-5">
+                   <div style="width:800px;padding-right:200px;"><center>
+                  <%=f.text_field :comment, :size => "40", placeholder:"Your Query you wish to ask", class:"input-xlarge"%></center>
+            </div></div>
+        </div><%=f.submit "Ask the Community!",class:"btn btn-success btn-lg"%><div style="padding-bottom:50px;"></div>
+                        
+                <%end%>
+                    </center>
+                </div>
+    </div>         
+
+    </div>
+    </div>
+    </body>
+</html>
+    

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Truegamer</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<script src="https://js.braintreegateway.com/js/braintree-2.31.0.min.js"></script>
+  </head>
+
+  <body>
+      <header>
+          <%=render "nav"%>
+                <%=render "cart"%>
+        
+</header>
+      <%=content_tag :div,notice,class:"bg-success",:style => "padding-left:150px;",class:"bg-success",:style => "padding-left:150px;"%>
+      <%=content_tag :div,alert,class:"bg-danger" ,:style => "padding-left:150px;"%>
+    <%= yield %>
+          <div id="container">
+       
+   <div id="footer">
+    <center><h3>Gamers don't die they just Respawn</h3></center> <%= image_tag("f.jpg")%>
+       <h4>&copy; Copyright 2017.  All Rights Reserved.  &reg; Registered Trademark Gamer</h4>
+     </div>
+</div>
+  </body>
+</html>
